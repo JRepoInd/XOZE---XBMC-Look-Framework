@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://code.google.com/p/apple-tv2-xbmc/xoze/ xoze.xsd"
+	xmlns="https://code.google.com/p/apple-tv2-xbmc/xoze/">
+
+	<service path="ping" action-id="perform_ping" module="response.handler" function="prepareResp"/>
+
+	<action id="__start__">
+		<move module="moves.Home" function="displayMenuItems" view-id="loading" />
+	</action>
+
+	<view function="view_loading" module="views.main" id="loading">
+		<event function="handle_left" action-id="showTVShows" module=""
+			content-id="abcd" intent="click" />
+	</view>
+
+	<!-- Common Video Link Player Moves -->
+
+	<action id="snap_and_play_video">
+		<move module="moves.PreProcessor" function="prepareVideoItem" />
+		<move module="moves.SnapVideo" function="addPlaylistVideosInfo" />
+		<move module="moves.SnapVideo" function="addVideoInfo" />
+	</action>
+
+	<action id="snap_and_directplay_playlist">
+		<move module="moves.PreProcessor" function="preparePlayListItems" />
+		<move module="moves.SnapVideo" function="addPlaylistVideosInfo" />
+		<move module="moves.SnapVideo" function="addVideoInfo" />
+	</action>
+
+</actions>
